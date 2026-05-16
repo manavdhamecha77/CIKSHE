@@ -163,7 +163,7 @@ export default function TabsSection() {
                       : "bg-transparent text-text-light border-warm-brown/20 hover:border-saffron/50"
                   }`}
                 >
-                  Ph. D. Coordinators
+                  Ph. D. Coordinator
                 </button>
                 <button
                   onClick={() => setActivePeopleSubTab("volunteers")}
