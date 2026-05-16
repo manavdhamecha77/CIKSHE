@@ -8,6 +8,7 @@ const footerLinks = [
   { id: "courses", label: "Courses" },
   { id: "phd", label: "Ph.D. Programme" },
   { id: "advisors", label: "Advisors" },
+  { id: "people", label: "People" },
 ];
 
 export default function Footer() {

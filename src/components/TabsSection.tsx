@@ -14,17 +14,21 @@ const phdAreas = [
   "Vedantic Science and Life Management"
 ];
 
+import { phdCoordinators, volunteers } from "@/data";
+
 const tabs = [
   { id: "objectives", label: "Objectives" },
   { id: "vision", label: "Vision" },
   { id: "mission", label: "Mission" },
   { id: "courses", label: "Courses" },
-  { id: "phd", label: "Ph.D. Programme" },
-  { id: "advisors", label: "Advisors" }
+  { id: "phd", label: "Ph. D. Programme" },
+  { id: "advisors", label: "Advisors" },
+  { id: "people", label: "People" }
 ];
 
 export default function TabsSection() {
   const [activeTab, setActiveTab] = useState("objectives");
+  const [activePeopleSubTab, setActivePeopleSubTab] = useState("coordinators");
 
   useEffect(() => {
     const handleTabChange = (e: Event) => {
@@ -144,6 +148,58 @@ export default function TabsSection() {
           {activeTab === "advisors" && (
             <div className="font-cormorant text-[1.2rem] italic text-text-light p-12 border border-dashed border-warm-brown/30 text-center">
               Advisor profiles to be added here.
+            </div>
+          )}
+
+          {/* PEOPLE */}
+          {activeTab === "people" && (
+            <div className="max-w-6xl mx-auto">
+              <div className="flex justify-center gap-4 sm:gap-8 mb-10">
+                <button
+                  onClick={() => setActivePeopleSubTab("coordinators")}
+                  className={`font-jost text-[0.9rem] sm:text-[1rem] font-medium px-4 sm:px-6 py-2 rounded-full border transition-all ${
+                    activePeopleSubTab === "coordinators"
+                      ? "bg-saffron text-white border-saffron shadow-md"
+                      : "bg-transparent text-text-light border-warm-brown/20 hover:border-saffron/50"
+                  }`}
+                >
+                  Ph. D. Coordinators
+                </button>
+                <button
+                  onClick={() => setActivePeopleSubTab("volunteers")}
+                  className={`font-jost text-[0.9rem] sm:text-[1rem] font-medium px-4 sm:px-6 py-2 rounded-full border transition-all ${
+                    activePeopleSubTab === "volunteers"
+                      ? "bg-saffron text-white border-saffron shadow-md"
+                      : "bg-transparent text-text-light border-warm-brown/20 hover:border-saffron/50"
+                  }`}
+                >
+                  Volunteers
+                </button>
+              </div>
+
+              <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+                {(activePeopleSubTab === "coordinators" ? phdCoordinators : volunteers).map((person) => (
+                  <div key={person.id} className="group flex flex-col items-center text-center">
+                    <div className="relative w-48 h-48 sm:w-56 sm:h-56 mb-6 rounded-2xl overflow-hidden border-2 border-warm-brown/10 group-hover:border-saffron/30 transition-colors shadow-lg">
+                      <div className="absolute inset-0 bg-warm-brown/5 flex items-center justify-center text-warm-brown/20">
+                        <svg className="w-20 h-20" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                        </svg>
+                      </div>
+                      {/* Using a placeholder if image is missing */}
+                      <img
+                        src={person.photo}
+                        alt={person.name}
+                        className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:scale-105 transition-transform duration-500"
+                        onLoad={(e) => (e.currentTarget.style.opacity = "1")}
+                        onError={(e) => (e.currentTarget.style.display = "none")}
+                      />
+                    </div>
+                    <h3 className="font-cormorant text-[1.5rem] sm:text-[1.8rem] font-bold text-deep-navy mb-1">{person.name}</h3>
+                    <p className="font-jost text-[0.9rem] sm:text-[1rem] uppercase tracking-widest text-saffron font-medium">{person.role}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
         </div>
