@@ -179,7 +179,7 @@ export default function TabsSection() {
 
               <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
                 {(activePeopleSubTab === "coordinators" ? phdCoordinators : volunteers).map((person) => (
-                  <div key={person.id} className="group flex flex-col items-center text-center">
+                  <div key={person.id} className="group flex flex-col items-center text-center w-full max-w-full">
                     <div className="relative w-48 h-48 sm:w-56 sm:h-56 mb-6 rounded-2xl overflow-hidden border-2 border-warm-brown/10 group-hover:border-saffron/30 transition-colors shadow-lg">
                       <div className="absolute inset-0 bg-warm-brown/5 flex items-center justify-center text-warm-brown/20">
                         <svg className="w-20 h-20" fill="currentColor" viewBox="0 0 24 24">
@@ -197,6 +197,43 @@ export default function TabsSection() {
                     </div>
                     <h3 className="font-cormorant text-[1.5rem] sm:text-[1.8rem] font-bold text-deep-navy mb-1">{person.name}</h3>
                     <p className="font-jost text-[0.9rem] sm:text-[1rem] uppercase tracking-widest text-saffron font-medium">{person.role}</p>
+                    {(person.phone || person.emails?.length) && (
+                      <div className="mt-3 w-full max-w-[min(100%,22rem)] px-2 text-center">
+                        {person.phone && (
+                          <p className="font-jost text-[0.9rem] sm:text-[0.95rem] text-text-mid leading-relaxed">
+                            <span className="font-semibold text-text-dark">Mobile:</span>{" "}
+                            <a
+                              href={`tel:${person.phone.replace(/\s+/g, "")}`}
+                              className="text-text-mid hover:text-saffron transition-colors"
+                            >
+                              {person.phone}
+                            </a>
+                          </p>
+                        )}
+                        {person.emails?.[0] && (
+                          <p className="font-jost text-[0.9rem] sm:text-[0.95rem] text-text-mid leading-relaxed break-words [overflow-wrap:anywhere]">
+                            <span className="font-semibold text-text-dark">Email 1:</span>{" "}
+                            <a
+                              href={`mailto:${person.emails[0]}`}
+                              className="text-text-mid hover:text-saffron transition-colors break-words [overflow-wrap:anywhere]"
+                            >
+                              {person.emails[0]}
+                            </a>
+                          </p>
+                        )}
+                        {person.emails?.[1] && (
+                          <p className="font-jost text-[0.9rem] sm:text-[0.95rem] text-text-mid leading-relaxed break-words [overflow-wrap:anywhere]">
+                            <span className="font-semibold text-text-dark">Email 2:</span>{" "}
+                            <a
+                              href={`mailto:${person.emails[1]}`}
+                              className="text-text-mid hover:text-saffron transition-colors break-words [overflow-wrap:anywhere]"
+                            >
+                              {person.emails[1]}
+                            </a>
+                          </p>
+                        )}
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
