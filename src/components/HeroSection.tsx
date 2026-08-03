@@ -54,7 +54,7 @@ export default function HeroSection() {
           </div>
           <div className="flex flex-col items-center justify-center text-center text-[#FAF7F0] leading-tight h-full">
             <p className="font-cormorant text-[0.82rem] sm:text-[1.08rem] md:text-[1.6rem] lg:text-[1.9rem] font-semibold tracking-[0.05em] sm:tracking-[0.07em] uppercase">
-              CENTRE FOR INDIAN KNOWLEDGE SYSTEMS AND HOLISTIC EDUCATION
+              Centre for Bharatiya Gyan Parampara
             </p>
             <p className="font-cormorant text-[0.62rem] sm:text-[0.86rem] md:text-[1.15rem] lg:text-[1.3rem] font-semibold tracking-[0.04em] sm:tracking-[0.05em] uppercase mt-1">
               SARDAR VALLABHBHAI NATIONAL INSTITUTE OF TECHNOLOGY, SURAT
@@ -70,18 +70,15 @@ export default function HeroSection() {
         <div className="order-2 md:order-1 flex flex-col items-center justify-center text-center h-full px-[6vw] md:px-[5vw] py-12 md:py-16 relative z-10 w-full min-w-0 overflow-hidden">
           <div className="flex flex-col items-center justify-center max-w-[560px] mx-auto">
             <h1 className="font-cormorant text-[2.45rem] sm:text-[2.8rem] md:text-[clamp(2.8rem,5vw,4rem)] font-semibold leading-[1.08] text-[#FAF7F0] mb-4 text-center md:text-center">
-              भारतीय ज्ञान परंपरा एवं <br />
-              समग्र शिक्षा केन्द्र
+              भारतीय ज्ञान परंपरा केन्द्र
             </h1>
 
             <p className="font-cormorant text-[1.35rem] sm:text-[1.55rem] md:text-[clamp(1.8rem,3vw,2.5rem)] font-light italic text-[#FAF7F0]/90 leading-[1.28] mb-6">
-              Centre for <span className="text-saffron not-italic">Indian Knowledge Systems</span> <br className="md:hidden" />
-              <span className="text-saffron not-italic">&amp; Holistic Education</span> welcomes you
+              Centre for <span className="text-saffron not-italic">Bharatiya Gyan Parampara</span> <br className="md:hidden" /> welcomes you
             </p>
 
             <p className="mb-6 w-full max-w-full whitespace-normal md:whitespace-nowrap text-center font-cormorant text-[1.08rem] sm:text-[1.2rem] md:text-[clamp(0.85rem,1.15vw,1.2rem)] font-semibold uppercase tracking-[0.1em] sm:tracking-[0.16em] leading-[1.22] text-transparent bg-clip-text bg-[length:300%_300%] animate-gradient-shift drop-shadow-[0_2px_10px_rgba(12,27,58,0.35)] break-words">
-              BHARATIYA KNOWLEDGE SYSTEMS <br />
-              AND HOLISTIC EDUCATION
+              Bharatiya Gyan Parampara
             </p>
 
             <a href="#about" className="inline-flex self-center md:self-start items-center justify-center gap-2 bg-saffron text-[#FAF7F0] px-6 py-2.5 text-[0.7rem] sm:text-[0.8rem] font-medium tracking-[0.08em] sm:tracking-[0.1em] uppercase hover:bg-[#A8401A] hover:translate-x-1 transition-all w-max mt-4 after:content-['→']">

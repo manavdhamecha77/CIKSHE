@@ -57,7 +57,7 @@ export default function TabsSection() {
       {/* ABOUT STRIP */}
       <div className="bg-light-sand px-[8vw] pt-4 pb-12 flex justify-center text-center">
         <p className="font-cormorant text-[clamp(1.2rem,2.2vw,1.6rem)] lg:text-[1.8rem] font-normal leading-[1.7] text-text-mid max-w-5xl mx-auto">
-          The <strong className="text-deep-navy font-semibold">Centre for Indian Knowledge Systems and Holistic Education</strong> is a multidisciplinary hub for research on all aspects of Indian Knowledge Systems.
+          The <strong className="text-deep-navy font-semibold">Centre for Bharatiya Gyan Parampara</strong> is a multidisciplinary hub for research on all aspects of Indian Knowledge Systems.
         </p>
       </div>
 
@@ -104,7 +104,7 @@ export default function TabsSection() {
             <div className="max-w-[800px] mx-auto text-center bg-deep-navy p-10 sm:p-14 relative overflow-hidden">
               <span className="font-cormorant text-[14rem] leading-none font-bold text-gold/10 absolute -top-8 left-1/2 -translate-x-1/2 pointer-events-none">"</span>
               <p className="font-cormorant text-[clamp(1.1rem,2.5vw,1.6rem)] lg:text-[1.9rem] xl:text-[2.1rem] font-light italic leading-[1.8] text-ivory/95 relative z-10 mx-auto max-w-[92%]">
-                To establish <strong className="text-gold not-italic font-semibold">SVNIT Surat</strong> as a frontier leader in disseminating Indian Knowledge Systems for Holistic Education with the aspiration of harmony with existence and the feeling of <br /> <span className="text-gold mt-3 text-[1.4rem] inline-block normal-case tracking-wide" style={{ fontFamily: "'Samarkan', sans-serif" }}>Vasudhaiva Kutumbakam</span>.
+                To establish <strong className="text-gold not-italic font-semibold">SVNIT Surat</strong> as a frontier leader in disseminating Bharatiya Gyan Parampara for Holistic Education with the aspiration of harmony with existence and the feeling of <br /> <span className="text-gold mt-3 text-[1.4rem] inline-block normal-case tracking-wide" style={{ fontFamily: "'Samarkan', sans-serif" }}>Vasudhaiva Kutumbakam</span>.
               </p>
             </div>
           )}
@@ -115,7 +115,7 @@ export default function TabsSection() {
               <div className="bg-saffron text-[#FAF7F0] p-10 sm:p-14 relative max-w-[720px] w-full text-center overflow-hidden">
                 <span className="text-[8rem] leading-none opacity-10 absolute -bottom-6 -right-6 transform rotate-12 pointer-events-none">☀</span>
                 <p className="font-cormorant text-[clamp(1.2rem,2.5vw,1.6rem)] lg:text-[1.9rem] xl:text-[2.2rem] italic leading-[1.8] relative z-10">
-                  "Facilitating the journey from head to heart by disseminating the profound ancient indigenous wisdom for integrating them into modern education for holistic advancement."
+                  "To facilitate the journey from the head to the heart through the integration of profound ancient indigenous wisdom with the modern education and research for holistic advancement."
                 </p>
               </div>
             </div>

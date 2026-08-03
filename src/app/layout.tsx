@@ -16,9 +16,9 @@ const jost = Jost({
 });
 
 export const metadata: Metadata = {
-  title: "Centre for Indian Knowledge Systems and Holistic Education | SVNIT Surat",
+  title: "Centre for Bharatiya Gyan Parampara | SVNIT Surat",
   description:
-    "The Centre for Indian Knowledge Systems and Holistic Education is a multidisciplinary hub for research on all aspects of Indian Knowledge Systems at SVNIT Surat.",
+    "The Centre for Bharatiya Gyan Parampara is a multidisciplinary hub for research on all aspects of Indian Knowledge Systems at SVNIT Surat.",
 };
 
 export default function RootLayout({

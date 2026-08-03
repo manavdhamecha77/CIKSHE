@@ -30,15 +30,14 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
       `}
     >
       <div className="max-w-4xl flex flex-col items-center text-center px-6 transition-all duration-1000">
-        
         {/* 1. Sanskrit Title */}
         <h2 className="font-cormorant text-slate-900 text-2xl md:text-4xl font-black mb-4 tracking-widest">
-          भारतीय ज्ञान परंपरा एवं समग्र शिक्षा केन्द्र
+          भारतीय ज्ञान परंपरा केन्द्र
         </h2>
 
         {/* 2. English Title */}
         <h1 className="text-slate-900 text-lg md:text-2xl font-black mb-16 tracking-[0.2em] uppercase opacity-40">
-          Centre for Indian Knowledge Systems & Holistic Education
+          Centre for Bharatiya Gyan Parampara
         </h1>
 
         {/* 3. Central Logo */}
@@ -59,7 +58,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
           <p className="text-blue-800 font-black text-sm md:text-base tracking-[0.5em] uppercase">
             SVNIT SURAT
           </p>
-          
+
           {/* 5. Custom Progress Loader */}
           <div className="w-64 h-2 bg-slate-100 rounded-full overflow-hidden relative border border-slate-200/50 shadow-inner">
             <div
@@ -71,15 +70,14 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
             />
           </div>
         </div>
-
       </div>
 
       {/* Background Ambience */}
-      <Image 
-        src="/images/image1.png" 
-        alt="Loading Background" 
-        fill 
-        className="object-cover opacity-[0.06] pointer-events-none" 
+      <Image
+        src="/images/image1.png"
+        alt="Loading Background"
+        fill
+        className="object-cover opacity-[0.06] pointer-events-none"
       />
     </div>
   );

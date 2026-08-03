@@ -57,8 +57,7 @@ export default function Footer() {
               <Image src="/logo/logo.png" alt="SVNIT Logo" fill className="object-contain" />
             </div>
             <h3 className="font-cormorant text-[1.4rem] font-semibold text-[#FAF7F0] mb-3 leading-snug">
-              Centre for Indian Knowledge Systems<br />
-              & Holistic Education
+              Centre for Bharatiya Gyan Parampara
             </h3>
             <p className="text-[0.65rem] sm:text-[0.7rem] tracking-[0.12em] uppercase text-gold/70 leading-relaxed max-w-[280px] sm:max-w-[340px]">
               Sardar Vallabhbhai National Institute of Technology, Surat
@@ -97,7 +96,7 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col md:flex-row justify-between pt-6 text-[0.7rem] uppercase tracking-wider flex-wrap gap-4 text-gold/60">
-          <span>© {new Date().getFullYear()} Center For IKSHE, SVNIT, Surat.</span>
+          <span>© {new Date().getFullYear()} Center For BGP, SVNIT, Surat.</span>
         </div>
       </footer>
     </>

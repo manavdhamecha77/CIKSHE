@@ -1,8 +1,8 @@
-# Centre for Indian Knowledge Systems and Holistic Education (SVNIT Surat)
+# Centre for Bharatiya Gyan Parampara (SVNIT Surat)
 
-**भारतीय ज्ञान परंपरा एवं समग्र शिक्षा केन्द्र**
+**भारतीय ज्ञान परंपरा केन्द्र**
 
-The Centre for Indian Knowledge Systems and Holistic Education is a multidisciplinary research and education hub located at SVNIT Surat. This application serves as the official digital platform for the Centre, providing comprehensive information about its objectives, academic programmes, and research initiatives.
+The Centre for Bharatiya Gyan Parampara is a multidisciplinary research and education hub located at SVNIT Surat. This application serves as the official digital platform for the Centre, providing comprehensive information about its objectives, academic programmes, and research initiatives.
 
 ## Key Features
 
@@ -21,4 +21,4 @@ The Centre for Indian Knowledge Systems and Holistic Education is a multidiscipl
 
 ---
 
-© 2026 Centre for Indian Knowledge Systems and Holistic Education, SVNIT Surat. All rights reserved.
+© 2026 Centre for Bharatiya Gyan Parampara, SVNIT Surat. All rights reserved.
