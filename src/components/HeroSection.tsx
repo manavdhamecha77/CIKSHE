@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const mobileSlides = Array.from({ length: 24 }, (_, i) => ({
   id: i,
@@ -12,9 +12,17 @@ const desktopSlides = Array.from({ length: 11 }, (_, i) => ({
   image: `/images/desktop/image${i}.png`,
 }));
 
+const HERO_AUDIO_START_TIME = 0;
+
 export default function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMobile,     setIsMobile] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
+  const heroRef = useRef<HTMLElement>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const isHeroVisibleRef = useRef(true);
+  const isPageVisibleRef = useRef(true);
+  const isMutedRef = useRef(false);
 
   const slides = isMobile ? mobileSlides : desktopSlides;
 
@@ -27,7 +35,10 @@ export default function HeroSection() {
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 767px)");
-    const updateIsMobile = () => setIsMobile(mediaQuery.matches);
+    const updateIsMobile = () => {
+      setIsMobile(mediaQuery.matches);
+      setCurrentSlide(0);
+    };
 
     updateIsMobile();
     mediaQuery.addEventListener("change", updateIsMobile);
@@ -36,11 +47,75 @@ export default function HeroSection() {
   }, []);
 
   useEffect(() => {
-    setCurrentSlide(0);
-  }, [isMobile]);
+    const audio = audioRef.current;
+    const hero = heroRef.current;
+    if (!audio || !hero) return;
+
+    // Set the default playback position before the first play, including when
+    // metadata has not yet loaded, so the intro is consistently skipped.
+    audio.currentTime = HERO_AUDIO_START_TIME;
+
+    const playAudio = () => {
+      if (!isHeroVisibleRef.current || !isPageVisibleRef.current || isMutedRef.current) return;
+
+      // Browsers can reject audible autoplay. The rejection is expected and the
+      // mute button remains available for a user-initiated retry.
+      void audio.play().catch(() => undefined);
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isHeroVisibleRef.current = entry.isIntersecting;
+        if (entry.isIntersecting) {
+          playAudio();
+        } else {
+          audio.pause();
+        }
+      },
+      { threshold: 0.1 },
+    );
+
+    const handleVisibilityChange = () => {
+      isPageVisibleRef.current = !document.hidden;
+      if (document.hidden) {
+        audio.pause();
+      } else {
+        playAudio();
+      }
+    };
+
+    observer.observe(hero);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    // Wait until the first paint has completed before starting playback.
+    const frame = requestAnimationFrame(playAudio);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      audio.pause();
+    };
+  }, []);
+
+  const toggleMute = () => {
+    const audio = audioRef.current;
+    const nextMuted = !isMutedRef.current;
+
+    isMutedRef.current = nextMuted;
+    setIsMuted(nextMuted);
+
+    if (!audio) return;
+    audio.muted = nextMuted;
+
+    if (!nextMuted && isHeroVisibleRef.current && isPageVisibleRef.current) {
+      void audio.play().catch(() => undefined);
+    }
+  };
 
   return (
-    <section className="min-h-[100svh] bg-deep-navy flex flex-col relative overflow-hidden">
+    <section ref={heroRef} className="min-h-[100svh] bg-deep-navy flex flex-col relative overflow-hidden">
+      <audio ref={audioRef} src="/audio/hero.mp3" preload="metadata" loop />
       {/* Background Pattern */}
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.8]"
@@ -81,7 +156,7 @@ export default function HeroSection() {
               Bharatiya Gyan Parampara
             </p>
 
-            <a href="#about" className="inline-flex self-center md:self-start items-center justify-center gap-2 bg-saffron text-[#FAF7F0] px-6 py-2.5 text-[0.7rem] sm:text-[0.8rem] font-medium tracking-[0.08em] sm:tracking-[0.1em] uppercase hover:bg-[#A8401A] hover:translate-x-1 transition-all w-max mt-4 after:content-['→']">
+            <a href="#about" className="inline-flex self-center items-center justify-center gap-2 bg-saffron text-[#FAF7F0] px-6 py-2.5 text-[0.7rem] sm:text-[0.8rem] font-medium tracking-[0.08em] sm:tracking-[0.1em] uppercase hover:bg-[#A8401A] hover:translate-x-1 transition-all w-max mt-4 after:content-['→']">
               Explore More
             </a>
           </div>
@@ -105,6 +180,28 @@ export default function HeroSection() {
                 />
               </div>
             ))}
+            <button
+              type="button"
+              onClick={toggleMute}
+              className="absolute right-4 top-4 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/30 bg-deep-navy/80 text-[#FAF7F0] shadow-lg backdrop-blur-sm transition-colors hover:bg-saffron focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-deep-navy"
+              aria-label={isMuted ? "Unmute hero audio" : "Mute hero audio"}
+              aria-pressed={isMuted}
+              title={isMuted ? "Unmute audio" : "Mute audio"}
+            >
+              {isMuted ? (
+                <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5 fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M11 5 6 9H3v6h3l5 4V5Z" />
+                  <path d="m23 9-6 6" />
+                  <path d="m17 9 6 6" />
+                </svg>
+              ) : (
+                <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5 fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M11 5 6 9H3v6h3l5 4V5Z" />
+                  <path d="M15.5 8.5a5 5 0 0 1 0 7" />
+                  <path d="M19 5a10 10 0 0 1 0 14" />
+                </svg>
+              )}
+            </button>
           </div>
         </div>
       </div>

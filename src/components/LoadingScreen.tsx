@@ -11,9 +11,9 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
   const [phase, setPhase] = useState<"in" | "hold" | "out">("in");
 
   useEffect(() => {
-    const t1 = setTimeout(() => setPhase("hold"), 400);
-    const t2 = setTimeout(() => setPhase("out"), 2200);
-    const t3 = setTimeout(() => onComplete(), 2800);
+    const t1 = setTimeout(() => setPhase("hold"), 150);
+    const t2 = setTimeout(() => setPhase("out"), 700);
+    const t3 = setTimeout(() => onComplete(), 1200);
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
@@ -25,7 +25,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
     <div
       className={`
         fixed inset-0 z-[9999] flex flex-col items-center justify-center
-        bg-[#fcfdfd] transition-all duration-1000 ease-in-out
+        bg-[#fcfdfd] transition-all duration-500 ease-in-out
         ${phase === "out" ? "opacity-0 scale-110 pointer-events-none" : "opacity-100 scale-100"}
       `}
     >
@@ -64,7 +64,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
             <div
               className={`
                 h-full bg-blue-800
-                transition-all duration-[2200ms] ease-out
+                transition-all duration-[700ms] ease-out
                 ${phase === "in" ? "w-0" : "w-full"}
               `}
             />
