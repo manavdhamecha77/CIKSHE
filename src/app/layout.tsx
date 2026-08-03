@@ -32,6 +32,7 @@ export default function RootLayout({
       className={`${cormorant.variable} ${jost.variable} h-full antialiased`}
     >
       <head>
+        <link rel="preload" href="/audio/hero.mp3" as="audio" type="audio/mpeg" />
         <link href="https://fonts.cdnfonts.com/css/samarkan" rel="stylesheet" />
       </head>
       <body className="min-h-full flex flex-col">

@@ -84,22 +84,32 @@ export default function HeroSection() {
       }
     };
 
+    // Request playback immediately. The autoplay attribute below lets the
+    // browser begin fetching before this client component hydrates.
+    playAudio();
     observer.observe(hero);
     document.addEventListener("visibilitychange", handleVisibilityChange);
 
-    // Wait until the first paint has completed before starting playback.
-    const frame = requestAnimationFrame(playAudio);
+    const playAfterFirstInteraction = () => playAudio();
+    document.addEventListener("pointerdown", playAfterFirstInteraction, { once: true, capture: true });
 
     return () => {
-      cancelAnimationFrame(frame);
       observer.disconnect();
       document.removeEventListener("visibilitychange", handleVisibilityChange);
+      document.removeEventListener("pointerdown", playAfterFirstInteraction, true);
       audio.pause();
     };
   }, []);
 
   const toggleMute = () => {
     const audio = audioRef.current;
+    // A click is a user gesture, so it can recover from a browser blocking
+    // audible autoplay without requiring a separate play control.
+    if (audio?.paused && !isMutedRef.current) {
+      void audio.play().catch(() => undefined);
+      return;
+    }
+
     const nextMuted = !isMutedRef.current;
 
     isMutedRef.current = nextMuted;
@@ -115,7 +125,7 @@ export default function HeroSection() {
 
   return (
     <section ref={heroRef} className="min-h-[100svh] bg-deep-navy flex flex-col relative overflow-hidden">
-      <audio ref={audioRef} src="/audio/hero.mp3" preload="metadata" loop />
+      <audio ref={audioRef} src="/audio/hero.mp3" preload="auto" autoPlay loop />
       {/* Background Pattern */}
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.8]"
