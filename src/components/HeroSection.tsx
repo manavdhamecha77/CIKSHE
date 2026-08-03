@@ -50,7 +50,7 @@ export default function HeroSection() {
       <header className="relative z-10 bg-deep-navy border-b-4 border-saffron px-4 sm:px-6 md:px-10 lg:px-14 py-4 md:py-5">
         <div className="mx-auto max-w-[1800px] min-h-[92px] md:min-h-[112px] grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-4 sm:gap-6">
           <div className="relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 shrink-0">
-            <Image src="/logo/logo.png" alt="IKS Logo" fill className="object-contain" priority />
+            <Image src="/logo/logo_img.png" alt="IKS Logo" fill className="object-contain" priority />
           </div>
           <div className="flex flex-col items-center justify-center text-center text-[#FAF7F0] leading-tight h-full">
             <p className="font-cormorant text-[0.82rem] sm:text-[1.08rem] md:text-[1.6rem] lg:text-[1.9rem] font-semibold tracking-[0.05em] sm:tracking-[0.07em] uppercase">

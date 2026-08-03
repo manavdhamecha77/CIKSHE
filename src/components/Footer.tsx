@@ -54,7 +54,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-[2.5fr_1fr_1fr] gap-x-6 gap-y-10 md:gap-12 pb-10 border-b border-white/5">
           <div className="col-span-2 md:col-span-1 flex flex-col items-center text-center">
             <div className="relative w-40 h-40 md:w-56 md:h-56 mb-5">
-              <Image src="/logo/logo.png" alt="SVNIT Logo" fill className="object-contain" />
+              <Image src="/logo/logo_img.png" alt="SVNIT Logo" fill className="object-contain" />
             </div>
             <h3 className="font-cormorant text-[1.4rem] font-semibold text-[#FAF7F0] mb-3 leading-snug">
               Centre for Bharatiya Gyan Parampara
